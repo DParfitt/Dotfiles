@@ -1,0 +1,252 @@
+; vim:ft=cfg
+;     _____
+;    (, /   )    /)      /)
+;     _/__ / ___//      (/_ _   __
+;     /     (_)(/_ (_/_/_) (_(_/ (_
+;  ) /            .-/
+; (_/            (_/
+
+[colors]
+background = ${xrdb:color0}
+foreground = ${xrdb:color7}
+
+red     = ${xrdb:color1}
+orange  = ${xrdb:color9}
+yellow  = ${xrdb:color3}
+green   = ${xrdb:color2}
+cyan    = ${xrdb:color6}
+blue    = ${xrdb:color4}
+magenta = ${xrdb:color5}
+white   = ${xrdb:color7}
+
+[global/wm]
+margin-top        = 0
+margin-bottom     = 0
+override-redirect = true
+
+[bar/mainbar]
+;monitor = ${env:MONITOR:eDP1}
+width    = 50%
+height   = 20
+offset-x = 200
+offset-y = 0
+
+bottom = true
+
+background = #000f0f0f
+foreground = #000f0f0f
+
+font-0 = "Wuncon Siji:size=9;2"
+font-2 = lemon:pixelsize=8;2
+font-1 = scientifica:size=8:antialias=true;2
+
+modules-left   = date battery music
+modules-center =
+modules-right  =
+
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+
+[bar/datebar]
+;monitor = ${env:MONITOR:eDP1}
+width    = 160
+height   = 32
+offset-x = 0
+offset-y = 0
+
+bottom = true
+
+background = ${xrdb:color0}
+foreground = ${xrdb:color7}
+
+font-0 = "Wuncon Siji:size=9;2"
+font-2 = lemon:pixelsize=8;2
+font-1 = scientifica:size=8:antialias=true;2
+
+modules-left   = date battery
+modules-center =
+modules-right  =
+
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+[bar/netbar]
+;monitor = ${env:MONITOR:eDP1}
+width    = 20%
+height   = 32
+offset-x = 0
+offset-y = 40
+
+bottom = true
+
+background = #000f0f0f
+foreground = #000f0f0f
+
+font-0 = "Wuncon Siji:size=9;2"
+font-2 = lemon:pixelsize=8;2
+font-1 = scientifica:size=8:antialias=true;2
+
+modules-left   = essid
+modules-center =
+modules-right  =
+
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+[bar/musicbar]
+;monitor = ${env:MONITOR:eDP1}
+width    = 30%
+height   = 32
+offset-x = 170
+offset-y = 0
+
+bottom = true
+
+background = #000f0f0f
+foreground = #000f0f0f
+
+font-0 = "Wuncon Siji:size=9;2"
+font-2 = lemon:pixelsize=8;2
+font-1 = scientifica:size=8:antialias=true;2
+
+modules-left   = musicicon spotify
+modules-center =
+modules-right  =
+
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+
+[module/network]
+type          = internal/network
+interface     = wlp4s0
+ping-interval = 3
+
+[module/date]
+type                     = internal/date
+interval                 = 1
+date                     = "%I:%M %p"
+format-padding           = 3
+format-background        = ${xrdb:color4}
+format-foreground        = ${colors.background}
+
+[module/musicicon]
+type              = custom/script
+exec              = echo ""
+interval          = 40
+format-padding    = 2
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+
+[module/music]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 2
+
+format-online = <label-song>
+format-online-padding = 0
+
+label-song         = "%title% - %artist%"
+label-song-foreground         = ${xrdb:color7}
+label-song-background         = ${colors.background}
+label-song-maxlen = 60
+label-song-padding = 4
+
+[module/spotify]
+type = custom/script
+interval = 2
+
+format = <label>
+format-padding = 0
+label = %output:0:50:...%
+label-padding = 4
+label-background = ${colors.background}
+label-foreground = ${colors.foreground}
+
+exec = "spotify_name.sh"
+click-left = playerctl previous
+click-middle = playerctl play-pause
+click-right = playerctl next
+
+[module/essid]
+inherit = module/network
+
+format-connected = <label-connected>
+format-connected-padding = 0
+
+format-connected-prefix            = ""
+format-connected-prefix-padding    = 2
+format-connected-prefix-background = ${colors.background}
+format-connected-prefix-foreground = ${colors.foreground}
+
+label-connected            = "%essid%"
+label-connected-background            = ${colors.magenta}
+label-connected-foreground            = ${colors.background}
+label-connected-padding    = 3
+
+format-disconnected =
+
+format-disconnected-prefix            = ""
+format-disconnected-prefix-padding    = 0
+format-disconnected-prefix-foreground = ${colors.magenta}
+
+label-disconnected            = "disconnected"
+label-disconnected-padding    = 1
+
+[module/battery]
+type          = internal/battery
+full-at       = 98
+battery       = BAT1
+adapter       = AC0
+poll-interval = 5
+
+format-charging = <label-charging>
+format-charging-padding = 0
+
+format-charging-prefix            = "  "
+format-charging-prefix-background = ${xrdb:color0}
+format-charging-prefix-foreground = ${xrdb:color4}
+format-charging-prefix-padding    = 1
+
+label-charging            = "%percentage%% "
+label-charging-background = ${colors.background}
+label-charging-foreground = ${xrdb:color7}
+label-charging-padding    = 1
+
+format-discharging = <label-discharging>
+format-discharging-padding = 0
+
+format-discharging-prefix            = "   "
+format-discharging-prefix-background = ${xrdb:color0}
+format-discharging-prefix-foreground = ${xrdb:color4}
+format-discharging-prefix-padding    = 0
+
+label-discharging            = "%percentage%% "
+label-discharging-background = ${colors.background}
+label-discharging-foreground = ${xrdb:color7}
+label-discharging-padding    = 1
+
+format-full = <label-full>
+format-full-padding = 0
+
+format-full-prefix            = " "
+format-full-prefix-background = ${xrdb:color0}
+format-full-prefix-foreground = ${xrdb:color4}
+format-full-prefix-padding    = 0
+
+label-full            = "%percentage%% "
+label-full-background = ${colors.background}
+label-full-foreground = ${xrdb:color7}
+label-full-padding = 1
