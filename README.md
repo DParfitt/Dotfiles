@@ -9,6 +9,7 @@ Some Details:
 * Colorscheme:          [Base16-Nord](https://github.com/chriskempson/base16)
 * Text Editor:          [Neovim](https://neovim.io/)
 * Visualizer:           [cli-visualizer](https://github.com/dpayne/cli-visualizer)
+* Wallpaper:            [Blurry](https://pixabay.com/en/blurry-lights-night-dark-eventing-691240/)
 
 
 ![Alt Text](/Screenshots/NF.png "Neofetch and Panes")
