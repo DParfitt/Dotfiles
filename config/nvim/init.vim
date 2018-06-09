@@ -135,7 +135,7 @@ set wildignore+=*.swp,.lock,.DS_Store,._*
 
 let g:base16_shell_path='~/.config/nvim/colors/'
 let base16colorspace=256
-colorscheme base16-onedark
+colorscheme base16-nord
 hi Normal ctermbg=NONE guibg=NONE
 
 set shiftwidth=4     " indent = 4 spaces
@@ -187,14 +187,14 @@ function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi PrimaryBlock ctermbg=2
   elseif a:mode == 'r'
-    hi PrimaryBlock ctermbg=1
+    hi PrimaryBlock ctermbg=6
   else
     hi PrimaryBlock ctermbg=3
   endif
 endfunction
 
 " default the statusline to green when entering Vim
-hi PrimaryBlock ctermbg=4
+hi PrimaryBlock ctermbg=8
 
 function! GitBranch()
 	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")

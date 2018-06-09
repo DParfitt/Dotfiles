@@ -1,22 +1,19 @@
-! Base16 OneDark
-! Scheme: Lalit Magant (http://github.com/tilal6991)
-
-#define base00 #282c34
-#define base01 #353b45
-#define base02 #3e4451
-#define base03 #545862
-#define base04 #565c64
-#define base05 #abb2bf
-#define base06 #b6bdca
-#define base07 #c8ccd4
-#define base08 #e06c75
-#define base09 #d19a66
-#define base0A #e5c07b
-#define base0B #98c379
-#define base0C #56b6c2
-#define base0D #61afef
-#define base0E #c678dd
-#define base0F #be5046
+#define base00 #2e3440
+#define base01 #3b4252
+#define base02 #434c5e
+#define base03 #4c566a
+#define base04 #d8dee9
+#define base05 #e5e9f0
+#define base06 #eceff4
+#define base07 #8fbcbb
+#define base08 #88c0d0
+#define base09 #81a1c1
+#define base0A #5e81ac
+#define base0B #bf616a
+#define base0C #d08770
+#define base0D #ebcb8b
+#define base0E #a3be8c
+#define base0F #b48ead
 
 *foreground:   base05
 #ifdef background_opacity
@@ -54,38 +51,29 @@
 *color21:      base06
 
 
+
 *.polybar.value:  ALT1
 *.polybar.icon:   ALT2
 
 
 URxvt*transparent:        false
-URxvt*shading:            25
-!URxvt.underlineColor:   #81a1c1
-!URxvt.highlightColor:   #7191b1
-!URxvt.throughColor:     #93e5cc
-URxvt*cursorColor:      #ff00ee
+URxvt*shading:            90
+URxvt*cursorColor:      base09
 URxvt*cursorColor2:     base00
 URxvt*scrollBar:        false
 URxvt*scrollBar_right:  false
 URxvt*internalBorder:   0
 URxvt*externalBorder:   0
-! URxvt.colorIT:      	#a3be8c
-! URxvt.colorBD:      	#e5e9f0
-! URxvt.colorUL:      	#81a1c1
-URxvt.geometry: 		60x30
-URxvt.internalBorder:	9
+URxvt.geometry: 		80x30
+URxvt.internalBorder:	6
 URxvt*letterSpace: 	    0
 URxvt*lineSpace: 		0
 URxvt*font:             xft:DejaVu Sans Mono for Powerline:regular:size=9
 URxvt*boldFont:         xft:DejaVu Sans Mono for Powerline:bold:size=9
 
 
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.iso14755: False
-URxvt.perl-ext-common: default,clipboard
-
 ! rofi
-rofi.color-window: base00, base00, base00
+rofi.color-window: base00, base00, base03
 rofi.color-normal: base00, base05, base00, base00, base0A
 rofi.color-active: base00, base05, base00, base00, base0A
 rofi.color-urgent: base00, base05, base00, base00, base0A

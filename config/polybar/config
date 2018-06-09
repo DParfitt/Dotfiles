@@ -10,14 +10,27 @@
 background = ${xrdb:color0}
 foreground = ${xrdb:color7}
 
-red     = ${xrdb:color1}
-orange  = ${xrdb:color9}
-yellow  = ${xrdb:color3}
-green   = ${xrdb:color2}
-cyan    = ${xrdb:color6}
-blue    = ${xrdb:color4}
-magenta = ${xrdb:color5}
-white   = ${xrdb:color7}
+c1     = ${xrdb:color1}
+c2     = ${xrdb:color9}
+c3     = ${xrdb:color3}
+c4     = ${xrdb:color2}
+c5     = ${xrdb:color6}
+c6     = ${xrdb:color4}
+c7     = ${xrdb:color5}
+c8     = ${xrdb:color8}
+c9     = ${xrdb:color10}
+c10     = ${xrdb:color11}
+c11     = ${xrdb:color12}
+c12     = ${xrdb:color13}
+c13     = ${xrdb:color14}
+c14     = ${xrdb:color15}
+c15     = ${xrdb:color16}
+c16     = ${xrdb:color17}
+c17     = ${xrdb:color18}
+c18     = ${xrdb:color19}
+c19     = ${xrdb:color20}
+c20     = ${xrdb:color21}
+
 
 [global/wm]
 margin-top        = 0
@@ -25,67 +38,73 @@ margin-bottom     = 0
 override-redirect = true
 
 [bar/mainbar]
-;monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:LVDS-1}
 width    = 100%
 height   = 32
-offset-x = 0
-offset-y = 735
 
-bottom = true
+top = true
 
 background = ${xrdb:color0}
 foreground = ${xrdb:color7}
 
 font-0 = "Wuncon Siji:size=9;2"
-font-2 = lemon:pixelsize=8;2
 font-1 = scientifica:size=8:antialias=true;2
-font-3 = "DejaVu Sans Mono for Powerline:regular:size=9"
+font-2 = "DejaVu Sans Mono for Powerline:regular:size=9"
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left   = workspace
-modules-center = musicicon spotify 
-modules-right  = essid battery watch time date
+modules-left  =  time date essid 
+modules-center = musicicon spotify player_previous player_playpause player_next
+modules-right   = workspace battery powermenu
 
-padding-left        = 0
-padding-right       = 0
+padding-left        = 4
+padding-right       = 4
 module-margin-left  = 0
 module-margin-right = 0
+
 
 [module/network]
 type          = internal/network
 interface     = wlp4s0
 ping-interval = 3
 
-[module/watch]
-type              = custom/script
-exec              = echo "߷"
-interval          = 2
-format-padding    = 2
-format-background = ${colors.blue}
-format-foreground = ${colors.background}
 
 [module/time]
 type                     = internal/date
 interval                 = 1
-date                     = "%I:%M %p"
-format-padding           = 3
+time                     = %H:%M
+
+format =  <label>
+format-padding           = 2
 format-background        = ${colors.background}
-format-foreground        = ${colors.foreground}
+format-foreground        = ${colors.c1}
+
+label                    = %time%
+label-foreground         = ${colors.foreground}
+
 
 [module/date]
 type					 = internal/date
 interval				 = 1
 date					 = "%d-%b-%Y"
-format-padding			 = 3
+
+format                   =  <label>
+
+format-padding			 = 1
 format-background		 = ${colors.background}
-format-foreground		 = ${colors.foreground}
+format-foreground		 = ${colors.c1}
+
+label                    = %date%
+label-foreground         = ${colors.foreground}
 
 [module/musicicon]
 type              = custom/script
 exec              = echo ""
 interval          = 40
-format-padding    = 2
+format-padding    = 0
 format-background = ${colors.background}
-format-foreground = ${colors.green}
+format-foreground = ${colors.c1}
 
 [module/workspace]
 type			  = custom/script
@@ -93,7 +112,7 @@ exec			  = workspace.sh
 interval		  = 0.5
 format-padding	  = 2
 format-background = ${colors.background}
-format-foreground = ${colors.red}
+format-foreground = ${colors.c1}
 
 
 [module/spotify]
@@ -119,66 +138,186 @@ format-connected = <label-connected>
 format-connected-padding = 0
 
 format-connected-prefix            = ""
-format-connected-prefix-padding    = 2
+format-connected-prefix-padding    = 1
 format-connected-prefix-background = ${colors.background}
-format-connected-prefix-foreground = ${colors.magenta}
+format-connected-prefix-foreground = ${colors.c1}
 
 label-connected            = "%essid%"
 label-connected-background            = ${colors.background}
 label-connected-foreground            = ${colors.foreground}
-label-connected-padding    = 2
+label-connected-padding    = 0
 
 format-disconnected =
 
-format-disconnected-prefix            = ""
-format-disconnected-prefix-padding    = 0
-format-disconnected-prefix-foreground = ${colors.magenta}
+format-disconnected-prefix            = ""
+format-disconnected-prefix-padding    = 1
+format-disconnected-prefix-foreground = ${colors.c1}
 
 label-disconnected            = "disconnected"
-label-disconnected-padding    = 1
+label-disconnected-padding    = 0
 
 [module/battery]
 type          = internal/battery
 full-at       = 98
 battery       = BAT1
-adapter       = AC0
+adapter       = ACAD
 poll-interval = 5
 
 format-charging = <label-charging>
-format-charging-padding = 0
+format-charging-padding = 1
 
 format-charging-prefix            = "  "
-format-charging-prefix-background = ${xrdb:color0}
-format-charging-prefix-foreground = ${xrdb:color4}
+format-charging-prefix-background = ${colors.background}
+format-charging-prefix-foreground = ${colors.c1}
 format-charging-prefix-padding    = 1
 
 label-charging            = "%percentage%% "
 label-charging-background = ${colors.background}
-label-charging-foreground = ${xrdb:color7}
+label-charging-foreground = ${colors.foreground}
 label-charging-padding    = 1
 
 format-discharging = <label-discharging>
-format-discharging-padding = 0
+format-discharging-padding = 1
 
 format-discharging-prefix            = "   "
-format-discharging-prefix-background = ${xrdb:color0}
-format-discharging-prefix-foreground = ${xrdb:color4}
+format-discharging-prefix-background = ${colors.background}
+format-discharging-prefix-foreground = ${colors.c1}
 format-discharging-prefix-padding    = 0
 
 label-discharging            = "%percentage%% "
 label-discharging-background = ${colors.background}
-label-discharging-foreground = ${xrdb:color7}
+label-discharging-foreground = ${colors.foreground}
 label-discharging-padding    = 1
 
 format-full = <label-full>
-format-full-padding = 0
+format-full-padding = 1
 
 format-full-prefix            = " "
-format-full-prefix-background = ${xrdb:color0}
-format-full-prefix-foreground = ${xrdb:color4}
+format-full-prefix-background = ${colors.background}
+format-full-prefix-foreground = ${colors.c1}
 format-full-prefix-padding    = 0
 
 label-full            = "%percentage%% "
 label-full-background = ${colors.background}
-label-full-foreground = ${xrdb:color7}
+label-full-foreground = ${colors.foreground}
 label-full-padding = 1
+
+
+[module/powermenu]
+type = custom/menu
+
+label-open =
+label-open-foreground = ${colors.c4}
+label-open-background = ${colors.background}
+label-open-padding = 3
+label-close =
+label-close-padding = 0
+label-close-foreground = ${colors.c4}
+label-separator = |
+label-separator-padding = 3
+label-separator-foreground = ${colors.c1}
+
+menu-0-0 =
+menu-0-0-exec = systemctl reboot
+menu-0-1 =
+menu-0-1-exec = systemctl poweroff
+menu-0-2 =
+menu-0-2-exec = betterlockscreen -l
+
+
+[module/backlight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = ${colors.foreground}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = ${colors.c1}
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.c1}
+
+
+[module/cpu]
+format-label = internal/cpu
+
+format =  <label>
+format-background = ${colors.background}
+format-foreground = ${colors.c1}
+
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+ramp-coreload-underline = ${colors.c1}
+
+type = internal/cpu
+interval = 2
+label = %percentage%%
+label-padding = 1
+label-background = ${colors.background}
+label-foreground = ${colors.foreground}
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+format =  <label>
+format-background = ${colors.background}
+format-foreground = ${colors.c1}
+label = "%percentage_used%%"
+label-padding = 1
+label-foreground  = ${colors.foreground}
+
+
+[module/player_previous]
+type = custom/text
+interval = 1
+content = 
+content-padding = 1
+content-background = ${colors.background}
+content-foreground = ${colors.c1}
+
+click-left = playerctl previous
+
+[module/player_stop]
+type = custom/text
+interval = 1
+content = 
+content-padding = 1
+content-background = ${colors.background}
+content-foreground = ${colors.c1}
+click-left = playerctl stop
+
+[module/player_playpause]
+type = custom/script
+interval = 0.5
+label = %output%
+label-padding = 1
+label-background = ${colors.background}
+label-foreground = ${colors.c1}
+exec = playerctl_playpause.sh
+click-left = playerctl play-pause
+
+
+[module/player_next]
+type = custom/text
+interval = 1
+content = 
+content-padding = 1
+content-background = ${colors.background}
+content-foreground = ${colors.c1}
+click-left = playerctl next
+[module/player_title]
+

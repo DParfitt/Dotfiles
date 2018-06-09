@@ -7,10 +7,9 @@ xmodmap ~/.Xmodmap
 set +fp $HOME/.local/share/fonts
 set fp rehash
 
+
 # start bars
-polybar -r musicbar &
-polybar -r netbar &
-polybar -r datebar &
+polybar -r mainbar &
 betterlockscreen -w &
 urxvtd -q -f -o &
 
@@ -23,7 +22,7 @@ redshift &
 #setxkbmap -layout us -option ctrl:nocaps &
 
 # Background image
-feh --bg-fill "/home/dillon/Pictures/Wallpapers/SP.jpg"
+feh --bg-fill "/home/dillon/Pictures/Wallpapers/SP1.jpg"
 
 
 exec 2bwm

@@ -11,6 +11,7 @@
 # Source antigen
 source /usr/share/zsh/share/antigen.zsh
 export PATH=$PATH:/home/dillon/Scripts
+export PATH=$PATH:/home/dillon/Scripts/Color-Scripts/color-scripts/
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
